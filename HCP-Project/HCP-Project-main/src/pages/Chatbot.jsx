@@ -93,7 +93,7 @@ function Chatbot() {
     setInput("");
     setLoading(true);
     try {
-      const API_URL = import.meta.env.VITE_NODE_API_URL || "http://localhost:5001";
+      const API_URL = import.meta.env.VITE_NODE_API_URL;
       const res = await fetch(`${API_URL}/chat`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: text }) });
       const data = await res.json();
       setMessages(p => [...p, { id: Date.now() + 1, sender: "bot", text: data.reply }]);

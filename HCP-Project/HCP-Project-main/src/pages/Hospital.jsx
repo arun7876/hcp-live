@@ -38,7 +38,7 @@ function Hospital() {
       try {
         console.log("Sending:", lat, lng);
 
-        const API_URL = import.meta.env.VITE_NODE_API_URL || "http://localhost:5001";
+        const API_URL = import.meta.env.VITE_NODE_API_URL;
         const res = await fetch(`${API_URL}/hospitals`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
