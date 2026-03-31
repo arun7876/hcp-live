@@ -6,7 +6,8 @@ import joblib
 import os
 
 # Load the dataset
-dataset_path = 'synthetic_symptoms_dataset.csv'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+dataset_path = os.path.join(BASE_DIR, 'synthetic_symptoms_dataset.csv')
 if not os.path.exists(dataset_path):
     print(f"Error: Dataset not found at {dataset_path}")
     exit(1)
@@ -40,8 +41,8 @@ print(f"Model Accuracy: {accuracy * 100:.2f}%")
 
 print("Saving model and metadata...")
 # Save the model and label encoder
-joblib.dump(model, 'disease_model.pkl')
-joblib.dump(le, 'label_encoder.pkl')
-joblib.dump(list(X.columns), 'symptom_features.pkl')
+joblib.dump(model, os.path.join(BASE_DIR, 'disease_model.pkl'))
+joblib.dump(le, os.path.join(BASE_DIR, 'label_encoder.pkl'))
+joblib.dump(list(X.columns), os.path.join(BASE_DIR, 'symptom_features.pkl'))
 
 print("Model and metadata saved successfully!")

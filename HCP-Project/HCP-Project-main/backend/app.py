@@ -9,9 +9,10 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for React frontend
 
 # Load the model and metadata
-model_path = 'disease_model.pkl'
-encoder_path = 'label_encoder.pkl'
-features_path = 'symptom_features.pkl'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR, 'disease_model.pkl')
+encoder_path = os.path.join(BASE_DIR, 'label_encoder.pkl')
+features_path = os.path.join(BASE_DIR, 'symptom_features.pkl')
 
 if not os.path.exists(model_path):
     print("Error: Model not found. Please run train_model.py first.")
